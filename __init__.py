@@ -48,8 +48,7 @@ def result():
 #         result = request.form
         return render_template("secondpage.html", result=table, result2 = arr_result)
 if __name__ == '__main__':
-    app.run(debug = True)
-
+    app.run(host = "0.0.0.0", debug = True, port=5000)
 
 # In[ ]:
 
