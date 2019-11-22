@@ -5,9 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
   <meta name="HandheldFriendly" content="true" />
   <meta http-equiv="x-ua-compatible" content="ie=edge"/>
-  <title>Material Design Bootstrap</title>
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <title>꽃길만 걷조 한-꽃 번역기</title>
   <!-- Bootstrap core CSS -->
   <link href="{{url_for('static',filename='css/bootstrap.min.css')}}" rel="stylesheet">
   <!-- Material Design Bootstrap -->
@@ -34,20 +32,28 @@
   </script>
 
   <script>
+    
 	$(function(){
+		$("#btn").click(function () {
+			$("#Create").toggle();
+		});
 		var arr = new Array();
 		{% for i in range(15)%}
 			arr[{{i}}] = document.getElementById("image"+String({{i+1}}));
 			arr[{{i}}].src = "static/img/flower/"+'{{ result2[i] }}'+".png";
-			$("#image"+String({{i+1}})).tooltip({html: true, title: "꽃 이름: "+"{{result[i]['f_name']}}"
-			+"<br>탄생화 날짜: "+{% if result[i]['f_birth']=='' %}"없음"{% else %}"{{result[i]['f_birth']}}"{% endif %}+"<br>꽃말: "+"{{result[i]['f_lang']}}"});
+			$("#image"+String({{i+1}})).tooltip({html: true, title: "꽃 이름: "+"{{result['f_name'].values[i%arr_len]}}"
+			+"<br>탄생화 날짜: "+{% if result['f_birth'].values[i%arr_len] != result['f_birth'].values[i%arr_len]%}"-"{% else %}"{{result['f_birth'].values[i%arr_len]}}"{% endif %}+"<br>꽃말: "+"{{result['f_lang'].values[i%arr_len]}}"});
 		{% endfor %}
 	});
 	$(function(){
-		$(".fback").css("background-image","url('static/img/back"+String(Math.floor(Math.random()*6)+1)+".png')");
+		$(".fback").css("background-image","url('static/img/back"+String(Math.floor(Math.random()*2)+1)+".png')");
 	});
   </script>
   <style type="text/css">
+   @FONT-FACE{
+	font-family:'tvNMedium';
+	src: url('static/font/tvN 즐거운이야기 Medium.ttf') format('truetype');
+  }
     @media (min-width: 800px) and (max-width: 850px) {
       .navbar:not(.top-nav-collapse) {
         background: #1C2331 !important;
@@ -55,6 +61,9 @@
     }
 	@media (min-width: 1025px){
 		.allwrapper{
+			background-repeat: no-repeat;
+			background-image: url('static/img/background1.jpg');
+			background-size: cover;
 			width:100%;
 			height:100%;
 		}
@@ -68,7 +77,7 @@
 		.fback{
 			background-repeat: no-repeat;
 			background-size: 500px;
-			width: 800px;
+			width: 500px;
 			height: 700px;
 			position:absolute;
 		}
@@ -157,8 +166,10 @@
 		}
 	}
 		.allwrapper{
+			background-repeat: no-repeat;
+			background-image: url('static/img/background1.jpg');
+			background-size: cover;
 			padding-left:35%;
-			padding:0 auto;
 			width:100%;
 			height:100%;
 		}
@@ -174,7 +185,7 @@
 			position:absolute;
 			background-repeat: no-repeat;
 			background-size: 500px;
-			width: 800px;
+			width: 500px;
 			height: 700px;
 		}
 		#image1{
@@ -260,7 +271,6 @@
 			margin-left:70%;
 			transform:rotate(120deg)
 		}
-
   </style>
 
  </head>
@@ -271,7 +281,7 @@
 
       <!-- Brand -->
       <a class="navbar-brand" href="https://mdbootstrap.com/docs/jquery/" target="_blank">
-        <strong>조이름</strong>
+        <strong>꽃길만 걷조</strong>
       </a>
 
       <!-- Collapse -->
@@ -295,19 +305,9 @@
         <!-- Right -->
         <ul class="navbar-nav nav-flex-icons">
           <li class="nav-item">
-            <a href="https://www.facebook.com" class="nav-link" target="_blank">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="https://twitter.com" class="nav-link" target="_blank">
-              <i class="fab fa-twitter"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="https://github.com/mdbootstrap/bootstrap-material-design" class="nav-link border border-light rounded"
+            <a href="https://github.com/wowx1001/Team3_FinalProject" class="nav-link border border-light rounded"
               target="_blank">
-              <i class="fab fa-github mr-2"></i>우리조 GitHub
+              꽃길만 걷조 GitHub
             </a>
           </li>
         </ul>
@@ -316,49 +316,28 @@
   </nav>
   <div class="allwrapper">
 	<div class="fback"></div>
+		<div id="Create" style="position: absolute; margin-left:30%; margin-top:12%; display:none; vertical-align: middle;">
+			<img style="width: 400px; height: 350px;" src='static/img/wback.png'>
+			<a style="text-align: center; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: tvNMedium; font-size:50px;">{{sentence}}</a>
+		</div>
 	<span class="wrapper">
-	<img data-toggle="tooltip" data-placement="top" id="image1" onerror="this.style.display='none'"></img>
-	<img data-toggle="tooltip" data-placement="top" id="image5" onerror="this.style.display='none'"></img>
-	<img data-toggle="tooltip" data-placement="top" id="image6" onerror="this.style.display='none'"></img>
-	<img data-toggle="tooltip" data-placement="top" id="image2" onerror="this.style.display='none'"></img>
-	<img data-toggle="tooltip" data-placement="top" id="image7" onerror="this.style.display='none'"></img>
-	<img data-toggle="tooltip" data-placement="top" id="image12" onerror="this.style.display='none'"></img>
-	<img data-toggle="tooltip" data-placement="top" id="image13" onerror="this.style.display='none'"></img>
-	<img data-toggle="tooltip" data-placement="top" id="image8" onerror="this.style.display='none'"></img>
-	<img data-toggle="tooltip" data-placement="left" id="image9" onerror="this.style.display='none'"></img>
-	<img data-toggle="tooltip" data-placement="bottom" id="image14" onerror="this.style.display='none'"></img>
-	<img data-toggle="tooltip" data-placement="bottom" id="image15" onerror="this.style.display='none'"></img>
-	<img data-toggle="tooltip" data-placement="right" id="image10" onerror="this.style.display='none'"></img>
-	<img data-toggle="tooltip" data-placement="bottom" id="image3" onerror="this.style.display='none'"></img>
-	<img data-toggle="tooltip" data-placement="bottom" id="image11" onerror="this.style.display='none'"></img>
-	<img data-toggle="tooltip" data-placement="bottom" id="image4" onerror="this.style.display='none'"></img>
+		<img data-toggle="tooltip" data-placement="top" id="image1" onerror="this.style.display='none'"></img>
+		<img data-toggle="tooltip" data-placement="top" id="image5" onerror="this.style.display='none'"></img>
+		<img data-toggle="tooltip" data-placement="top" id="image6" onerror="this.style.display='none'"></img>
+		<img data-toggle="tooltip" data-placement="top" id="image2" onerror="this.style.display='none'"></img>
+		<img data-toggle="tooltip" data-placement="top" id="image7" onerror="this.style.display='none'"></img>
+		<img data-toggle="tooltip" data-placement="top" id="image12" onerror="this.style.display='none'"></img>
+		<img data-toggle="tooltip" data-placement="top" id="image13" onerror="this.style.display='none'"></img>
+		<img data-toggle="tooltip" data-placement="top" id="image8" onerror="this.style.display='none'"></img>
+		<img data-toggle="tooltip" data-placement="left" id="image9" onerror="this.style.display='none'"></img>
+		<img data-toggle="tooltip" data-placement="bottom" id="image14" onerror="this.style.display='none'"></img>
+		<img data-toggle="tooltip" data-placement="bottom" id="image15" onerror="this.style.display='none'"></img>
+		<img data-toggle="tooltip" data-placement="right" id="image10" onerror="this.style.display='none'"></img>
+		<img data-toggle="tooltip" data-placement="bottom" id="image3" onerror="this.style.display='none'"></img>
+		<img data-toggle="tooltip" data-placement="bottom" id="image11" onerror="this.style.display='none'"></img>
+		<img data-toggle="tooltip" data-placement="bottom" id="image4" onerror="this.style.display='none'"></img>
 	</span>
+	<a target="_blank" id="btn" class="btn btn-outline-white btn-lg" style="margin-top: 52%; margin-left:30%;">메시지 보기</a>
   </div>
-	<footer class="page-footer text-center font-small mt-4 wow fadeIn">
-
-    <hr class="my-4">
-
-    <!-- Social icons -->
-    <div class="pb-4">
-      <a href="https://www.facebook.com/mdbootstrap" target="_blank">
-        <i class="fab fa-facebook-f mr-3"></i>
-      </a>
-      <a href="https://www.youtube.com/watch?v=7MUISDJ5ZZ4" target="_blank">
-        <i class="fab fa-youtube mr-3"></i>
-      </a>
-      <a href="https://github.com/mdbootstrap/bootstrap-material-design" target="_blank">
-        <i class="fab fa-github mr-3"></i>
-      </a>
-    </div>
-    <!-- Social icons -->
-
-    <!--Copyright-->
-    <div class="footer-copyright py-3">
-      © 2019 Copyright:
-      <a href="https://mdbootstrap.com/education/bootstrap/" target="_blank"> MDBootstrap.com </a>
-    </div>
-    <!--/.Copyright-->
-
-  </footer>
  </body>
 </html>

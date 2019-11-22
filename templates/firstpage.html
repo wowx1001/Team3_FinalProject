@@ -5,9 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>Material Design Bootstrap</title>
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+  <title>꽃길만 걷조 한-꽃 번역기</title>
   <!-- Bootstrap core CSS -->
   <link href="{{url_for('static',filename='css/bootstrap.min.css')}}" rel="stylesheet">
   <!-- Material Design Bootstrap -->
@@ -15,6 +13,10 @@
   <!-- Your custom styles (optional) -->
   <link href="{{url_for('static',filename='css/style.min.css')}}" rel="stylesheet">
   <style type="text/css">
+  @FONT-FACE{
+	font-family:'tvNMedium';
+	src: url('static/font/tvN 즐거운이야기 Medium.ttf') format('truetype');
+  }
     @media (min-width: 800px) and (max-width: 850px) {
       .navbar:not(.top-nav-collapse) {
         background: #1C2331 !important;
@@ -110,7 +112,7 @@
 
       <!-- Brand -->
       <a class="navbar-brand" href="https://mdbootstrap.com/docs/jquery/" target="_blank">
-        <strong>조이름</strong>
+        <strong style="font-family: tvNMedium; font-size=30px;">꽃길만 걷조</strong>
       </a>
 
       <!-- Collapse -->
@@ -134,19 +136,9 @@
         <!-- Right -->
         <ul class="navbar-nav nav-flex-icons">
           <li class="nav-item">
-            <a href="https://www.facebook.com/mdbootstrap" class="nav-link" target="_blank">
-              <i class="fab fa-facebook-f"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="https://twitter.com/MDBootstrap" class="nav-link" target="_blank">
-              <i class="fab fa-twitter"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="https://github.com/mdbootstrap/bootstrap-material-design" class="nav-link border border-light rounded"
+            <a href="https://github.com/wowx1001/Team3_FinalProject" class="nav-link border border-light rounded"
               target="_blank">
-              <i class="fab fa-github mr-2"></i>MDB GitHub
+              <i class="fab fa-github mr-2"></i>꽃길만 걷조 GitHub
             </a>
           </li>
         </ul>
@@ -290,119 +282,17 @@
   </div>
   <!--/.Carousel Wrapper-->
 
-  <!--Main layout-->
-  <main>
-    <div class="container">
-
-
-      <!--Section: Main features & Quick Start-->
-      <section>
-		<br>
-        <h3 class="h3 text-center mb-5">About MDB</h3>
-
-        <!--Grid row-->
-        <div class="row wow fadeIn">
-
-          <!--Grid column-->
-          <div class="col-lg-6 col-md-12 px-4">
-
-            <!--First row-->
-            <div class="row">
-              <div class="col-1 mr-3">
-                <i class="fas fa-code fa-2x indigo-text"></i>
-              </div>
-              <div class="col-10">
-                <h5 class="feature-title">Bootstrap 4</h5>
-                <p class="grey-text">Thanks to MDB you can take advantage of all feature of newest Bootstrap 4.</p>
-              </div>
-            </div>
-            <!--/First row-->
-
-            <div style="height:30px"></div>
-
-            <!--Second row-->
-            <div class="row">
-              <div class="col-1 mr-3">
-                <i class="fas fa-book fa-2x blue-text"></i>
-              </div>
-              <div class="col-10">
-                <h5 class="feature-title">Detailed documentation</h5>
-                <p class="grey-text">We give you detailed user-friendly documentation at your disposal. It will help
-                  you to implement your ideas
-                  easily.
-                </p>
-              </div>
-            </div>
-            <!--/Second row-->
-
-            <div style="height:30px"></div>
-
-            <!--Third row-->
-            <div class="row">
-              <div class="col-1 mr-3">
-                <i class="fas fa-graduation-cap fa-2x cyan-text"></i>
-              </div>
-              <div class="col-10">
-                <h5 class="feature-title">Lots of tutorials</h5>
-                <p class="grey-text">We care about the development of our users. We have prepared numerous tutorials,
-                  which allow you to learn
-                  how to use MDB as well as other technologies.</p>
-              </div>
-            </div>
-            <!--/Third row-->
-
-          </div>
-          <!--/Grid column-->
-
-        </div>
-        <!--/Grid row-->
-
-      </section>
-      <!--Section: Main features & Quick Start-->
-    </div>
-  </main>
-  <!--Main layout-->
-
-  <!--Footer-->
-  <footer class="page-footer text-center font-small mt-4 wow fadeIn">
-
-    <hr class="my-4">
-
-    <!-- Social icons -->
-    <div class="pb-4">
-      <a href="https://www.facebook.com/mdbootstrap" target="_blank">
-        <i class="fab fa-facebook-f mr-3"></i>
-      </a>
-      <a href="https://www.youtube.com/watch?v=7MUISDJ5ZZ4" target="_blank">
-        <i class="fab fa-youtube mr-3"></i>
-      </a>
-      <a href="https://github.com/mdbootstrap/bootstrap-material-design" target="_blank">
-        <i class="fab fa-github mr-3"></i>
-      </a>
-    </div>
-    <!-- Social icons -->
-
-    <!--Copyright-->
-    <div class="footer-copyright py-3">
-      © 2019 Copyright:
-      <a href="https://mdbootstrap.com/education/bootstrap/" target="_blank"> MDBootstrap.com </a>
-    </div>
-    <!--/.Copyright-->
-
-  </footer>
 
     <div id="myModal" class="modal">
       <!-- Modal content -->
       <div class="modal-content">
-                <p style="text-align: center;"><span style="font-size: 14pt;"><b><span style="font-size: 24pt;">입력</span></b></span></p>
-                <p style="text-align: center; line-height: 1.5;"><br />여기에 내용</p>
-				<form name="fr" action="http://0.0.0.0:5000/result" method="POST"  onsubmit="return check()">
-					<label for="uri">문장입력</label>
-					<input id="uri" type="text" name="uri" />
-					<input name="input_sen" type="submit" value="전송"/>
+                <p style="text-align: center;"><span style="font-size: 14pt;"><b><span style="font-size: 24pt;">입력창</span></b></span></p>
+                <p style="text-align: center; line-height: 1.5;"><br />전달할 문장을 입력해주세요</p>
+				<form name="fr" action="/result"  method="POST"  onsubmit="return check()">
+					<input id="uri" type="text" name="uri" style="width: 100%; height:50px; text-align: center;"/><br/>
+					<input name="input_sen" type="submit" value="전달" style="width:100%; border: none; font-size: 13pt; text-align: center; padding-top: 10px; padding-bottom: 10px; margin-top:10px;"/>
 				</form>
-                <p><br /></p>
-            <div style="cursor:pointer;background-color:#DDDDDD;text-align: center;padding-bottom: 10px;padding-top: 10px;" onClick="close_pop();">
+				<div style="cursor:pointer;background-color:#DDDDDD;text-align: center;padding-bottom: 10px;padding-top: 10px; margin-top:10px;" onClick="close_pop();">
                 <span class="pop_bt" style="font-size: 13pt;" >
                      닫기
                 </span>
@@ -439,7 +329,7 @@
 
 		function check() {
 			if(fr.uri.value == "") {
-				alert("문장을 입력해 주세요.");
+				alert("문장을 제대로 입력해 주세요.");
 				fr.uri.focus();
 				return false;
 			}
