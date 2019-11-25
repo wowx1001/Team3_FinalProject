@@ -39,7 +39,7 @@ def translation_txt(txt):
     API_HOST = 'https://kapi.kakao.com'
     path = '/v1/translation/translate'
     url = API_HOST + path
-    headers = {'Authorization': 'KakaoAK 804521e931ca6206cf47bfff30e56d4c'}
+    headers = {'Authorization': 'KakaoAK'}
 
     params = {"query": txt, "src_lang":"kr", "target_lang":"en"}
     resp =  requests.post(url, headers=headers, data=params)
